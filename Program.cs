@@ -2,32 +2,28 @@
 {
     internal class Program
     {
-        
+
         static void Main(string[] args)
         {
-            Binarysearch b = new Binarysearch();
-
-            List<int> Geek = new List<int>() {
-                              5, 6, 1, 9};
-
-            Console.WriteLine("Original List");
-
-            foreach (int g in Geek)
+            int[] arr = { 78, 55, 45, 98, 13 };
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
             {
-                Console.WriteLine(g);
-                // prints original List
+                for (int i = 0; i <= arr.Length - 2; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
             }
-
-            Console.WriteLine("\nList in Sorted form");
-            Geek.Sort();
-
-            foreach (int g in Geek)
-            {
-                Console.WriteLine(g);
-                // prints the sorted List
-            }
-
-         
+            Console.WriteLine("Sorted:");
+            foreach (int p in arr)
+                Console.Write(p + " ");
+            Console.Read();
         }
     }
     }
+
