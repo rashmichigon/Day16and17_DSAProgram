@@ -4,66 +4,58 @@ namespace Day16and17_DSAProgram
 {
     internal class Program
     {
-        public static bool areAnagram(ArrayList str1,
-                                ArrayList str2)
-        {
-            // Get lengths of both strings
-            int n1 = str1.Count;
-            int n2 = str2.Count;
-
-            // If length of both strings is not
-            // same, then they cannot be anagram
-            if (n1 != n2)
-            {
-                return false;
-            }
-
-            // Sort both strings
-            str1.Sort();
-            str2.Sort();
-
-            // Compare sorted strings
-            for (int i = 0; i < n1; i++)
-            {
-                if (str1[i] != str2[i])
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+       
         static void Main(string[] args)
         {
-            // create and initialize new ArrayList
-            ArrayList str1 = new ArrayList();
-            str1.Add('h');
-            str1.Add('e');
-            str1.Add('a');
-            str1.Add('r');
-            str1.Add('t');
+            int a, b, i, j, flag;
 
-            // create and initialize new ArrayList
-            ArrayList str2 = new ArrayList();
-            str2.Add('e');
-            str2.Add('a');
-            str2.Add('r');
-            str2.Add('t');
-            str2.Add('h');
+            // Ask user to enter lower value of interval
+            Console.WriteLine("Enter lower bound of " +
+                              "the interval: ");
 
-            // Function call
-            if (areAnagram(str1, str2))
+            // Take input
+            a = int.Parse(Console.ReadLine());
+
+            // Ask user to enter upper value of interval
+            Console.WriteLine("\nEnter upper bound " +
+                              "of the interval: ");
+
+            // Take input
+            b = int.Parse(Console.ReadLine());
+
+            // Print display message
+            Console.WriteLine("\nPrime numbers between " +
+                              "{0} and {1} are: ", a, b);
+
+            // Traverse each number in the interval
+            // with the help of for loop
+            for (i = a; i <= b; i++)
             {
-                Console.WriteLine("The two strings are"
-                                  + " anagram of each other");
-            }
-            else
-            {
-                Console.WriteLine("The two strings are not"
-                                  + " anagram of each other");
+
+                // Skip 0 and 1 as they are
+                // neither prime nor composite
+                if (i == 1 || i == 0)
+                    continue;
+
+                // flag variable to tell
+                // if i is prime or not
+                flag = 1;
+
+                for (j = 2; j <= i / 2; ++j)
+                {
+                    if (i % j == 0)
+                    {
+                        flag = 0;
+                        break;
+                    }
+                }
+
+                // flag = 1 means i is prime
+                // and flag = 0 means i is not prime
+                if (flag == 1)
+                    Console.WriteLine(i);
             }
         }
-
     }
 }
 
