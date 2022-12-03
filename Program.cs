@@ -2,30 +2,32 @@
 {
     internal class Program
     {
-        static void permute(String s, String answer)
-        {
-            if (s.Length == 0)
-            {
-                Console.Write(answer + "  ");
-                return;
-            }
-
-            for (int i = 0; i < s.Length; i++)
-            {
-                char ch = s[i];
-                String left_substr = s.Substring(0, i);
-                String right_substr = s.Substring(i + 1);
-                String rest = left_substr + right_substr;
-                permute(rest, answer + ch);
-            }
-        }
+        
         static void Main(string[] args)
         {
-            String s = "ABC";
-            String answer = "";
+            Binarysearch b = new Binarysearch();
 
-            Console.Write("\nAll possible strings are : ");
-            permute(s, answer);
+            List<int> Geek = new List<int>() {
+                              5, 6, 1, 9};
+
+            Console.WriteLine("Original List");
+
+            foreach (int g in Geek)
+            {
+                Console.WriteLine(g);
+                // prints original List
+            }
+
+            Console.WriteLine("\nList in Sorted form");
+            Geek.Sort();
+
+            foreach (int g in Geek)
+            {
+                Console.WriteLine(g);
+                // prints the sorted List
+            }
+
+         
         }
     }
-}
+    }
